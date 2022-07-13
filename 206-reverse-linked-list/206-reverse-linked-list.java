@@ -76,6 +76,8 @@ class Solution {
 }
 */
 // Time complexity O(n)
+// Recursive approach
+// Do visualisation of recursive call - To do 
 class Solution {
     public ListNode reverseList(ListNode head) {
         if(head == null || head.next == null) return head;
