@@ -60,6 +60,8 @@ null <-- 1 <-- 2 <-- 3 <-- 4 <-- 5
 By the end of this, prev will become a new head and return it
 
 */
+// Time complexity O(n)
+// Space complexity O(1)
 class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
