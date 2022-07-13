@@ -58,9 +58,8 @@ null <-- 1 <-- 2 <-- 3 <-- 4 <-- 5
                                  prev
 
 By the end of this, prev will become a new head and return it
-
-*/
-// Time complexity O(n)
+ 
+ // Time complexity O(n)
 // Space complexity O(1)
 class Solution {
     public ListNode reverseList(ListNode head) {
@@ -73,5 +72,18 @@ class Solution {
             curr = temp;
         }
         return prev;
+    }
+}
+*/
+// Time complexity O(n)
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode curr = head;
+        ListNode nextNode = curr.next;
+        curr.next = null;
+        ListNode finalHead = reverseList(nextNode);
+        nextNode.next = curr;
+        return finalHead;
     }
 }
