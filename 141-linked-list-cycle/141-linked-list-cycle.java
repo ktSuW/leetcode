@@ -24,11 +24,13 @@ https://medium.com/@tuvo1106/the-tortoise-and-the-hare-floyds-algorithm-87badf5f
 public class Solution {
     public boolean hasCycle(ListNode head) {
         // constraints the number of the nodes can be between 0 and 10^4.
-        // To cover this edge case
-        if(head == null || head.next == null) return false;
+        // // To cover this edge case
+        // if(head == null || head.next == null) return false;
         
         ListNode slow = head;
         ListNode fast = head;
+        // fast must be the one you need to check for null value 
+        // since it move twice as fast compared to slow
         while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
