@@ -20,8 +20,6 @@ Approach - 2. Use two pointers approach - fast and slow
 https://dev.to/alisabaj/floyd-s-tortoise-and-hare-algorithm-finding-a-cycle-in-a-linked-list-39af
 
 https://medium.com/@tuvo1106/the-tortoise-and-the-hare-floyds-algorithm-87badf5f7d41
-*/
-public class Solution {
     public boolean hasCycle(ListNode head) {
         
         ListNode slow = head;
@@ -33,6 +31,24 @@ public class Solution {
             fast = fast.next.next;
             
             if(slow == fast) return true;
+        }
+        return false;
+    }
+*/
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        // Hashset appraoch 
+        // Time O(n)
+        // Space O(n) due to using set 
+        Set<ListNode> set = new HashSet<>();
+        while(head != null){
+            if(set.contains(head)){
+                return true;
+            }else{
+                set.add(head);
+                head = head.next;
+            }
+            
         }
         return false;
     }
