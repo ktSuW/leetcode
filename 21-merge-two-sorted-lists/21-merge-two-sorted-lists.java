@@ -25,6 +25,9 @@ Space O(m + n) due to recursive call stack use
 */
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // Iterative approach 
+        // O(n + m) => Time 
+        // O(1) space
         // dummy node is to keep head address 
         ListNode dummy = new ListNode(0);
         ListNode curr = dummy;
@@ -47,5 +50,6 @@ class Solution {
             curr.next = l1;
         }
         return dummy.next;
+
     }
 }
