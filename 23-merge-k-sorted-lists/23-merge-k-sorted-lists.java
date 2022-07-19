@@ -23,18 +23,18 @@ class Solution {
             }
         }
         
-        ListNode result = new ListNode(-1);
-        ListNode dummy = result;
+        ListNode dummy = new ListNode(-1);
+        ListNode head = dummy;
         while(!minHeap.isEmpty()){
             ListNode curr = minHeap.poll();
-            dummy.next = new ListNode(curr.val);
+            head.next = new ListNode(curr.val);
             // then move the pointer
             if(curr.next != null){
-                minHeap.offer(curr.next);
+                minHeap.add(curr.next);
             }
-            dummy = dummy.next;
+            head = head.next;
         }
-        return result.next;
+        return dummy.next;
         
     }
 }
