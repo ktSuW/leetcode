@@ -4,18 +4,18 @@
 */
 class LRUCache {
 
-    // Create head and tail two nodes with dummy values 
-    Node head = new Node(0,0);
-    Node tail = new Node(0,0);
+    // Create left and right two nodes with dummy values 
+    Node left = new Node(0,0);
+    Node right = new Node(0,0);
     Map<Integer, Node> map = new HashMap<>();
     int cacheCapacity;
     public LRUCache(int capacity) {
         cacheCapacity = capacity;
-        //Connect head and tail
-        // head -> tail
+        //Connect left and right
+        // left -> right
         //      <-
-        head.next = tail;
-        tail.prev = head;
+        left.next = right;
+        right.prev = left;
     }
     
     public int get(int key) {
@@ -38,7 +38,7 @@ class LRUCache {
         }
         // Remove least recently used cache 
         if(map.size() == cacheCapacity){
-            remove(tail.prev);
+            remove(right.prev);
         }
         insert(new Node(key, value));
     }
@@ -54,10 +54,10 @@ class LRUCache {
     //      <-  
     private void insert(Node node){
         map.put(node.key, node);
-        Node headNext = head.next;
-        head.next = node;
+        Node headNext = left.next;
+        left.next = node;
         node.next = headNext;
-        node.prev = head;
+        node.prev = left;
         headNext.prev = node;
     }
         // This node will act as doubly linked list 
