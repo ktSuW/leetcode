@@ -47,6 +47,7 @@ Option 1
         return result;
     }
 */
+// This solution is most memory optimised.
 class Solution {
     public int countGoodSubstrings(String s) {
  
