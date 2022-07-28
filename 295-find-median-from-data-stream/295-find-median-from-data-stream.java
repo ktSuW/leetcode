@@ -12,18 +12,36 @@ class MedianFinder {
     // We want max value from first half => therefore first half is max heap
     // We want min value from first half => therefore second half is min heap
     
-    PriorityQueue<Integer> maxheapFirsthalf = new PriorityQueue(Collections.reverseOrder());
-    PriorityQueue<Integer> minheapSecondhalf = new PriorityQueue();
+    PriorityQueue<Integer> maxheapFirsthalf;
+    PriorityQueue<Integer> minheapSecondhalf ;
     
     public MedianFinder() {
-        
+        maxheapFirsthalf = new PriorityQueue(Collections.reverseOrder());
+        minheapSecondhalf = new PriorityQueue();
     }
     
     public void addNum(int num) {
-        maxheapFirsthalf.add(num);
-        minheapSecondhalf.add(maxheapFirsthalf.poll());
-        if(maxheapFirsthalf.size() < minheapSecondhalf.size()){
-            // this way max will always be larger if they are not equal 
+        // maxheapFirsthalf.add(num);
+        // minheapSecondhalf.add(maxheapFirsthalf.poll());
+        // if(maxheapFirsthalf.size() < minheapSecondhalf.size()){
+        //     // this way max will always be larger if they are not equal 
+        //     maxheapFirsthalf.offer(minheapSecondhalf.poll());
+        // }
+        
+        //=====================
+        // better more readable code
+        if(maxheapFirsthalf.isEmpty() || maxheapFirsthalf.peek() > num){
+            maxheapFirsthalf.add(num);
+        }else{
+            minheapSecondhalf.add(num);
+        }
+        // check for size difference between these two queues
+        // difference will never be more than 1
+        if(maxheapFirsthalf.size() > minheapSecondhalf.size() + 1){
+            // push min top into max
+            // after that remove min top 
+            minheapSecondhalf.offer(maxheapFirsthalf.poll());
+        }else if (maxheapFirsthalf.size() +1 < minheapSecondhalf.size() ){
             maxheapFirsthalf.offer(minheapSecondhalf.poll());
         }
     }
@@ -32,7 +50,9 @@ class MedianFinder {
         if(maxheapFirsthalf.size() == minheapSecondhalf.size()){
             // 2.0 to get the double type 
             return (maxheapFirsthalf.peek() + minheapSecondhalf.peek())/ 2.0;
-        }else{
+        }else if(maxheapFirsthalf.size() < minheapSecondhalf.size()){
+            return minheapSecondhalf.peek();
+        } else{
             return maxheapFirsthalf.peek();
         }
     }
