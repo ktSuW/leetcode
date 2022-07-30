@@ -18,6 +18,6 @@ class Solution {
                 largest = Math.max(key, largest);
             }
         }
-        return largest > - 1 ? largest : -1;
+        return largest ;
     }
 }
