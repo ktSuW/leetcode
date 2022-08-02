@@ -30,31 +30,22 @@ class Solution {
         Stack<Integer> stack = new Stack<>();
         int maxArea = 0;
         int currentArea = 0;
-        int i = 0;
-        while( i < heights.length){
-            if(stack.isEmpty() || heights[i] >= heights[stack.peek()]){
-                stack.push(i);
-                i++;
-            }else{
-                int top = stack.pop();
+
+        for(int i = 0; i <= heights.length; i++){
+            while(!stack.isEmpty() && (i == heights.length || heights[i] <= heights[stack.peek()])){
+                int height = heights[stack.pop()];
+                int width; 
                 if(stack.isEmpty()){
-                    currentArea = heights[top] * i;
+                    width = i;
                 }else{
-                    currentArea = heights[top] * (i - stack.peek() -1);
+                    width = i - stack.peek() -1;
                 }
+                currentArea = height * width;
                 maxArea = Math.max(currentArea, maxArea);
             }
+            stack.push(i);
         }
         
-        while(!stack.isEmpty()){
-            int top = stack.pop();
-            if(stack.isEmpty()){
-                currentArea = heights[top] * i;
-            }else{
-                currentArea = heights[top] * (i - stack.peek() -1);
-            }
-            maxArea = Math.max(currentArea, maxArea);
-        }
         return maxArea;
     }
 }
