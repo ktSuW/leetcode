@@ -22,6 +22,16 @@ Height of the array itself can be found easily
  There could still be some indexes left. So to handle this case, 
     Check for stack is not empty
         - Keep popping up and calcuate the area like above
+        
+=========================================================
+- Brute Force
+------------------
+- Go all the way until the value is less than myself - both sides 
+    - This is to get the width
+
+Iterate through once , keep log of what you have visted 
+- Once you find a bar smaller than yourself, stop.
+    - find left side, if smaller. Calculate current var area. And then take the index out 
 */
 // Time complexity O(n)
 // Space complexity O(n) due to stack 
@@ -30,20 +40,46 @@ class Solution {
         Stack<Integer> stack = new Stack<>();
         int maxArea = 0;
         int currentArea = 0;
-
-        for(int i = 0; i <= heights.length; i++){
-            while(!stack.isEmpty() && (i == heights.length || heights[i] <= heights[stack.peek()])){
+        int i = 0;
+        while(i < heights.length){
+            if(stack.isEmpty() || heights[i] >= heights[stack.peek()]){
+                stack.push(i);
+                i++;
+            }else{
+                // start computing the area
                 int height = heights[stack.pop()];
-                int width; 
+                int width;
+                // width = stack.isEmpty() ? (i-1) : i - 1 - stack.peek();
+                // You don't want to go beyound the boundary
                 if(stack.isEmpty()){
-                    width = i;
+                    width = i ;
+    
                 }else{
-                    width = i - stack.peek() -1;
+                    width = i - 1 - stack.peek();
+    
                 }
                 currentArea = height * width;
                 maxArea = Math.max(currentArea, maxArea);
-            }
-            stack.push(i);
+            } 
+           
+            
+        }
+        //Some bars might be left - which areas are yet to be calculated for
+        while(!stack.isEmpty()){
+                int height = heights[stack.pop()];
+                int width;
+                // width = stack.isEmpty() ? (i-1) : i - 1 - stack.peek();
+                // You don't want to go beyound the boundary
+                if(stack.isEmpty()){
+                    width = i;
+
+                }else{
+                    width = i - 1 - stack.peek();
+      
+                }
+                // since it is 
+                currentArea = height * width;
+                maxArea = Math.max(currentArea, maxArea);
         }
         
         return maxArea;
