@@ -67,16 +67,14 @@ class Solution {
         //Some bars might be left - which areas are yet to be calculated for
         while(!stack.isEmpty()){
                 int height = heights[stack.pop()];
-                int width;
-                // width = stack.isEmpty() ? (i-1) : i - 1 - stack.peek();
-                // You don't want to go beyound the boundary
-                if(stack.isEmpty()){
-                    width = i;
+                int width = (stack.isEmpty()) ? i : i - 1- stack.peek();
+//                 if(stack.isEmpty()){
+//                     width = i;
 
-                }else{
-                    width = i - 1 - stack.peek();
+//                 }else{
+//                     width = i - 1 - stack.peek();
       
-                }
+//                 }
                 // since it is 
                 currentArea = height * width;
                 maxArea = Math.max(currentArea, maxArea);
