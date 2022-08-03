@@ -23,15 +23,11 @@ class Solution {
         stack.add(root);
         while(!stack.isEmpty()){
             TreeNode node = stack.pop();
+            if (node != null) {
             result.add(node.val);
-           
-            if(node.right != null){
-                stack.add(node.right);
-            }
-            
-            if(node.left != null){
-                stack.add(node.left);
-            } 
+            stack.add(node.right);
+            stack.add(node.left);
+        }
             
 
         }
