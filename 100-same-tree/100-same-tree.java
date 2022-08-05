@@ -20,6 +20,7 @@ class Solution {
         else if(p == null || q == null) return false;
         else if (p.val != q.val) return false;
         // Use BFS since I can break out from the loop early if I can the node with different datas in the top levels
+        // Concept is exactly the same as level order and check for the node values 
         Queue<TreeNode> queue1 = new LinkedList<>();
         Queue<TreeNode> queue2 = new LinkedList<>();
         queue1.offer(p);
@@ -32,6 +33,7 @@ class Solution {
                 q = queue2.poll();
                 if(p.val != q.val) return false;
                 
+                // Check for left 
                 if(p.left != null && q.left != null){
                     queue1.add(p.left);
                     queue2.add(q.left);
@@ -41,6 +43,7 @@ class Solution {
                     return false;
                 }
                 
+                // Check for right
                 if(p.right != null && q.right != null ){
                     queue1.add(p.right);
                     queue2.add(q.right);
