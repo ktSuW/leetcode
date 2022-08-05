@@ -22,7 +22,9 @@ class Solution {
         Queue<TreeNode> queue = new LinkedList<>();
         if(root == null) return result;
         queue.offer(root);
-        
+        // for each level, get queue size. 
+        // Into the queue, add popped element's left and right children if there are
+        // After each level, add the result into the final result
         while(!queue.isEmpty()){
             int size = queue.size();
             List<Integer> level = new ArrayList<>();
