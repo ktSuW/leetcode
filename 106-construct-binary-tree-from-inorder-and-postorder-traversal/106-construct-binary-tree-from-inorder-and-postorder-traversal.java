@@ -22,14 +22,14 @@ In post order, root is visited last.
 */
 class Solution {
     HashMap<Integer, Integer> inorderMap = new HashMap<>();
-    int postOrderIndex;
+    int postOrderIndex; 
     
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         for(int i = 0; i < inorder.length; i++ ){
             inorderMap.put(inorder[i], i);
         }
        postOrderIndex = postorder.length -1;
-       return buildTree(inorder, postorder, 0, postOrderIndex);
+       return buildTree(inorder, postorder, 0, postorder.length -1);
     }
     
     private TreeNode buildTree(int[] inorder, int[] postorder, int start, int end){
