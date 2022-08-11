@@ -7,7 +7,10 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-
+// Iterative approach
+// Space O(n)
+// Space O(1)
+// If I use recursion, Space will be O(n) due to recursive call stack use
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         int pValue = p.val;
