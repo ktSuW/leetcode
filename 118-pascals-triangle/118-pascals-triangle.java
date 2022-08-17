@@ -1,4 +1,15 @@
+/*
+n = 4 
+This problem is DP.
 
+            1   
+          1    1
+           \  /
+        1    2   1
+         \  /  \/
+    1     3     3   1
+
+*/
 
 class Solution {
     public List<List<Integer>> generate(int numRows) {
