@@ -16,10 +16,12 @@ class Solution {
             curr = curr.next;
             count++;
         }
+        System.out.println(count);
         
         int mid = count/2;
         ListNode result = head;
         // Even length
+        // [1, 2, 3, 4]
         if(count % 2 == 0){
             for(int i = 0; i < mid; i++){
                 result = result.next;
@@ -27,6 +29,7 @@ class Solution {
             return result;
         }
         // Odd length
+        // [1, 2, 3, 4, 5]
         if(count % 2 != 0){
             for(int i = 0; i <= mid; i++){
                 result = result.next;
