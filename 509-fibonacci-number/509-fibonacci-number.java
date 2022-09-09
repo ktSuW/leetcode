@@ -40,6 +40,9 @@
 */
 class Solution {
     public int fib(int n) {
+        // time O(n)
+        // space O(1)
+        // Most space optimised 
         if(n <=1) return n;
         int prev1 = 0;
         int prev2 = 1;
