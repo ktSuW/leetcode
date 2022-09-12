@@ -33,12 +33,16 @@ class Solution {
         // return climbStairs(n-1) + climbStairs(n-2);
         //========================================
         // Memoisation 
-
+        // a term describing an optimization technique where you cache previously computed results, and return the cached result when the same computation is needed again.
+        // https://programming.guide/dynamic-programming-vs-memoization-vs-tabulation.html
+        // https://www.baeldung.com/cs/tabulation-vs-memoization
         // int[] dp = new int[n+1];
         // Arrays.fill(dp, -1);
         // if(n <= 2) return n;
         // return dp[n] = climbStairs(n -1) + climbStairs(n -2) ;
         //========================================
+        // Tabulation 
+        // Tabulation is similar in the sense that it builds up a cache, but the approach is different. A tabulation algorithm focuses on filling the entries of the cache, until the target value has been reached.
         if(n <= 2) return n;
         int[] dp = new int[n+1];
         dp[1] = 1;
@@ -48,6 +52,7 @@ class Solution {
         }
         return dp[n];
         //=========================================
+        // Most space optimised 
         // if(n <= 2) return n;
         // int step1 = 1;
         // int step2 = 2;
