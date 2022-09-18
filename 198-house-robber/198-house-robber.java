@@ -45,10 +45,7 @@ n states
 dp[n] =1;
 TC O(n)
 SC O(n) for stack space + O(n) array space 
-
-**/
-
-class Solution {
+    //Option -2 : Optimised recursion with memoising the already calculated rob result
     int [] dp ;
     public int rob(int[] nums) {
         dp = new int[nums.length];
@@ -64,5 +61,30 @@ class Solution {
         int selected = rob(nums, index-2) + nums[index];
         int notSelected = rob(nums, index-1);
         return dp[index] = Math.max(selected, notSelected);
+    }
+===============================================================
+**/
+
+class Solution {
+    public int rob(int[] nums) {
+    //Option -3 : Convert memoisation to tabulation
+    // Tabulation is a bottom up approach. therefore build up from 0 till n
+    // Time Complexity - O(n)
+    // Space Complexity - O(n)
+    // No recursive call stack space 
+    //base case
+        if(nums == null || nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+ 
+
+        for(int i = 2; i < nums.length; i++){
+            int selected = nums[i] + dp[i-2];
+            int notSelected = 0 + dp[i-1];
+            dp[i] = Math.max(selected, notSelected);
+        }
+        return dp[nums.length-1];
     }
 }
