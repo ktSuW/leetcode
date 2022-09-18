@@ -88,6 +88,8 @@ SC O(n) for stack space + O(n) array space
 class Solution {
     public int rob(int[] nums) {
     //Option -4 : Opimise Tabulation to space optimise to achieve O(1) space complexity 
+    // Time O(n)
+    // Space O(1) --- THE BEST!!
     // prev2    prev1   curr
     //          prev2   prev1  curr
     // prev2 = prev1;
