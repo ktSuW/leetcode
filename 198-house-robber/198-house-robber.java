@@ -63,11 +63,7 @@ SC O(n) for stack space + O(n) array space
         return dp[index] = Math.max(selected, notSelected);
     }
 ===============================================================
-**/
-
-class Solution {
-    public int rob(int[] nums) {
-    //Option -3 : Convert memoisation to tabulation
+//Option -3 : Convert memoisation to tabulation
     // Tabulation is a bottom up approach. therefore build up from 0 till n
     // Time Complexity - O(n)
     // Space Complexity - O(n)
@@ -79,12 +75,35 @@ class Solution {
         dp[0] = nums[0];
         dp[1] = Math.max(nums[0], nums[1]);
  
-
         for(int i = 2; i < nums.length; i++){
             int selected = nums[i] + dp[i-2];
             int notSelected = 0 + dp[i-1];
             dp[i] = Math.max(selected, notSelected);
         }
         return dp[nums.length-1];
+================================================================
+
+**/
+
+class Solution {
+    public int rob(int[] nums) {
+    //Option -4 : Opimise Tabulation to space optimise to achieve O(1) space complexity 
+    // prev2    prev1   curr
+    //          prev2   prev1  curr
+    // prev2 = prev1;
+    // prev1 = curr;
+       if(nums.length == 0) return 0;
+        int prev1 = nums[0];
+        int prev2 = 0;
+
+        for(int i = 1; i < nums.length; i++){
+            int selected = nums[i] + prev2;
+            int notSelected = 0 + prev1;
+            int curr = Math.max(selected, notSelected);
+            prev2 = prev1;
+            prev1 = curr;
+            
+        }
+        return prev1;
     }
 }
