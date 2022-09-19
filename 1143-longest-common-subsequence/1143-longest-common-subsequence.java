@@ -19,6 +19,26 @@ Explore both possibility
     - move index1 only, keep index2 as it
     - move index2 only, keep index1 as it
 if not match, add 0 = f(index1 -1, index2) , f(index1, index2 -1)
+
+
+    public int longestCommonSubsequence(String text1, String text2) {
+//         int val = lcsRecursive(text1, text2, 0, 0);
+//         return val;
+
+    }
+//     public int lcsRecursive(String s, String t, int i, int j) {
+//         if (i >= s.length() || j >= t.length()) {
+//             return 0;
+//         }
+        
+//         if (s.charAt(i) == t.charAt(j)) {
+//             return lcsRecursive(s, t, i+1, j+1) + 1;
+//         } else {
+//             int a = lcsRecursive(s, t, i+1, j);
+//             int b = lcsRecursive(s, t, i, j+1);
+//             return Math.max(a, b);
+//         }
+//     }
 */
 
 class Solution {
@@ -44,6 +64,5 @@ class Solution {
 
         memo[idx1][idx2] = val ;
         return val ;
-
     }
 }
