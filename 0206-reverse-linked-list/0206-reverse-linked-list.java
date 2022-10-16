@@ -74,11 +74,8 @@ class Solution {
         return prev;
     }
 }
-*/
-// Time complexity O(n)
-// Recursive approach
-// Do visualisation of recursive call - To do 
-class Solution {
+
+    // O(n), O(n) space and time 
     public ListNode reverseList(ListNode head) {
         if(head == null || head.next == null) return head;
         ListNode finalHead = reverseList(head.next);
@@ -87,3 +84,35 @@ class Solution {
         return finalHead;
     }
 }
+*/
+// Time complexity O(n)
+// Recursive approach
+// Do visualisation of recursive call - To do 
+class Solution {
+    // O(n), O(n) space and time 
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr != null){
+            ListNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+        return prev;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
